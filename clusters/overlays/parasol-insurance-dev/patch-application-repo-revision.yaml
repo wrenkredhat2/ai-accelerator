@@ -1,6 +1,6 @@
 - op: replace
   path: /spec/source/repoURL
-  value: 'https://github.com/redhatwrenk2/ai-accelerator.git'
+  value: 'https://github.com/wrenkredhat2/ai-accelerator.git'
 - op: replace
   path: /spec/source/targetRevision
   value: main
