@@ -3,4 +3,4 @@
   value: 'https://github.com/redhat-ai-services/ai-accelerator-qa.git'
 - op: replace
   path: /spec/source/targetRevision
-  value: 2.16-parasol-dev-prod
+  value: bootcamp-parasol-insurance

@@ -63,14 +63,14 @@ spec:
               protocol: TCP
           imagePullPolicy: Always
           volumeMounts:
-#            - mountPath: /opt/app-root/src
-#             name: standard-workbench
-#           - mountPath: /dev/shm
-#             name: shm
-#           - mountPath: /etc/oauth/config
-#             name: oauth-config
-#           - mountPath: /etc/tls/private
-#             name: tls-certificates
+            - mountPath: /opt/app-root/src
+              name: standard-workbench
+            - mountPath: /dev/shm
+              name: shm
+            - mountPath: /etc/oauth/config
+              name: oauth-config
+            - mountPath: /etc/tls/private
+              name: tls-certificates
           workingDir: /opt/app-root/src
           envFrom:
             - secretRef:

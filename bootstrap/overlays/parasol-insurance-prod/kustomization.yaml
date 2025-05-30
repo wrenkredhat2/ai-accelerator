@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
 - ../../base
-- ../../../clusters/overlays/parasol-insurance-dev
+- ../../../clusters/overlays/parasol-insurance-prod

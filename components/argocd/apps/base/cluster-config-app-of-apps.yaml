@@ -12,8 +12,8 @@ spec:
   project: cluster-config
   source:
     path: patch-me-see-overlays
-    repoURL: https://github.com/wrenkredhat2/ai-accelerator.git
-    targetRevision: main
+    repoURL: https://github.com/redhat-ai-services/ai-accelerator-qa.git
+    targetRevision: 2.16-parasol-dev-prod
   syncPolicy:
     automated:
       prune: false

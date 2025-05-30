@@ -8,45 +8,41 @@ spec:
   tasks:
     - name: git-clone
       params:
-        - name: URL
+        - name: url
           value: "https://github.com/redhat-ai-services/ai-accelerator"
-        - name: REVISION
+        - name: revision
           value: ""
-        - name: REFSPEC
+        - name: refspec
           value: ""
-        - name: SUBMODULES
+        - name: submodules
           value: "true"
-        - name: DEPTH
+        - name: depth
           value: "1"
-        - name: SSL_VERIFY
+        - name: sslVerify
           value: "true"
-        - name: CRT_FILENAME
+        - name: crtFileName
           value: ca-bundle.crt
-        - name: SUBDIRECTORY
+        - name: subdirectory
           value: ""
-        - name: SPARSE_CHECKOUT_DIRECTORIES
+        - name: sparseCheckoutDirectories
           value: ""
-        - name: DELETE_EXISTING
+        - name: deleteExisting
           value: "true"
-        - name: HTTP_PROXY
+        - name: httpProxy
           value: ""
-        - name: HTTPS_PROXY
+        - name: httpsProxy
           value: ""
-        - name: NO_PROXY
+        - name: noProxy
           value: ""
-        - name: VERBOSE
+        - name: verbose
           value: "true"
-        - name: USER_HOME
+        - name: gitInitImage
+          value: "registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel8@sha256:66f219b4d54a41b945cb5715ecd1fbb5d25431cf8dad4b06914a4cdc65b298cc"
+        - name: userHome
           value: /home/git
       taskRef:
-        params:
-          - name: kind
-            value: task
-          - name: name
-            value: git-clone
-          - name: namespace
-            value: openshift-pipelines
-        resolver: cluster
+        kind: ClusterTask
+        name: git-clone
       workspaces:
         - name: output
           workspace: output
@@ -54,13 +50,15 @@ spec:
       params:
         - name: IMAGE
           value: CHANGEME***/redhat-ods-applications/custom-wb
+        - name: BUILDER_IMAGE
+          value: "registry.redhat.io/rhel8/buildah@sha256:b48f410efa0ff8ab0db6ead420a5d8d866d64af846fece5efb185230d7ecf591"
         - name: STORAGE_DRIVER
           value: vfs
         - name: DOCKERFILE
           value: documentation/training_and_learning/custom_workbench/Dockerfile
         - name: CONTEXT
           value: .
-        - name: TLS_VERIFY
+        - name: TLSVERIFY
           value: "true"
         - name: FORMAT
           value: oci
@@ -73,14 +71,8 @@ spec:
       runAfter:
         - git-clone
       taskRef:
-        params:
-          - name: kind
-            value: task
-          - name: name
-            value: buildah
-          - name: namespace
-            value: openshift-pipelines
-        resolver: cluster
+        kind: ClusterTask
+        name: buildah
       workspaces:
         - name: source
           workspace: output
